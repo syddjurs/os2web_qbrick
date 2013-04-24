@@ -219,3 +219,14 @@ function os2web_qbrick_field_formatter_view($entity_type, $entity, $field, $inst
   }
   return $element;
 }
+
+/**
+ * Implements hook_os2web_help().
+ */
+function os2web_qbrick_os2web_help($sections) {
+
+  // Module specific.
+  $sections['os2web_qbrick'] = t('<h2>Qbrick:</h2><p>Qbrick is used to upload videos of meetings, and to seperate that video into chapters. <a href="http://qbrick.com" target="_blank">Qbrick website</a></p>', array('@url' => url('job')));
+
+  return $sections;
+}
