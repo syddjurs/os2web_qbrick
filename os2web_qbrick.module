@@ -67,9 +67,9 @@ function _os2web_qbrick_get_movie_id($nid) {
   if (!is_object($node)) {
     return FALSE;
   }
-  $committee = taxonomy_term_load($node->field_committee[$node->language][0]['tid']);
+  $committee = taxonomy_term_load($node->field_os2web_meetings_committee[$node->language][0]['tid']);
   $committee = _os2web_qbrick_safedk($committee->name);
-  $date = format_date(strtotime($node->field_date[$node->language][0]['value']), 'custom', 'dmY', $node->field_date[$node->language][0]['timezone']);
+  $date = format_date(strtotime($node->field_os2web_meetings_date[$node->language][0]['value']), 'custom', 'dmY', $node->field_os2web_meetings_date[$node->language][0]['timezone']);
   // $html.=$committee . ' ' . $date;
   // $html.='
   // ' . print_r($node, 1);
