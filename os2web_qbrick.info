@@ -3,7 +3,7 @@ description = This generates links for agenda items. NOTE: Module requires namin
 core = 7.x
 package = OS2Web - Frontend
 php = 5.2.4
-version = 7.x-1.0-beta1
+version = 7.x-2.0
 project = os2web_qbrick
 dependencies[] = features
 explanation = Anvendte felttyper - se <a href="/admin/reports/fields">feltliste</a>
