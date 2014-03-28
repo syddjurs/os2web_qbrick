@@ -190,7 +190,7 @@ function os2web_qbrick_field_formatter_view($entity_type, $entity, $field, $inst
       $icon = drupal_get_path('module', 'os2web_qbrick') . '/images/video.jpg';
       foreach ($items as $delta => $item) {
         if ($item['seek']) {
-          $seek_link = '<a href="#qbrick_professional_qbrick1" class="qbrick-seek" data-qbrick-seek="' . $item['seek'] . ')"><img src="/' . $icon . '" alt="Show video"/></a>';
+          $seek_link = '<a href="#qbrick_professional_qbrick1" class="qbrick-seek" data-qbrick-seek="' . $item['seek'] . '"><img src="/' . $icon . '" alt="Show video"/></a>';
           $element[$delta]['#markup'] = $seek_link;
         }
       }
