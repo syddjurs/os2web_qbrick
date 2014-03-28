@@ -15,6 +15,7 @@
         width: 320,
       });
       $('.qbrick-seek').click(function(e) {
+        e.preventDefault();
         Drupal.behaviors.os2web_qbrick.play($(this).data('qbrick-seek'));
       });
     },
