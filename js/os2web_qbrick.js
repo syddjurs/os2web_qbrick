@@ -6,27 +6,27 @@
   var qbrick_widget;
   Drupal.behaviors.os2web_qbrick = {
     attach: function(context, settings) {
-      var $player = $('#qbrick');
-      Qbrick.Publisher.create(document.body, {
+      var $player = $('#qbrick-container');
+      Qbrick.Publisher.create(document.getElementById('qbrick-container'), {
         mcid : $player.data('qbrick-mcid'),
-        widgetId : 'qbrick',
+        widgetId : 'my_qbrick',
         widgetType : 'professional',
         height: 180,
         width: 320,
+        init: true
       });
       $('.qbrick-seek').click(function(e) {
         e.preventDefault();
-        Drupal.behaviors.os2web_qbrick.play($(this).data('qbrick-seek'));
+   	var position = $(this).data('qbrick-seek');
+	if (Qbrick.Publisher.flashVersion()) {
+	  Qbrick.Publisher.widgets('my_qbrick').position(position);
+	}
+	else {
+	  // When HTML5, qbrick has an odd error where it should be 
+          // seconds instead of miliseconds.
+	  Qbrick.Publisher.widgets('my_qbrick').position(position/1000);
+	}
       });
-    },
-    play: function(amount) {
-      if (!qbrick_widget) {
-        qbrick_widget = Qbrick.Publisher.widgets().qbrick;
-      }
-      if (qbrick_widget) {
-        qbrick_widget.position(amount);
-        qbrick_widget.play();
-      }
     }
   };
 

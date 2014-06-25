@@ -199,7 +199,7 @@ function os2web_qbrick_field_formatter_view($entity_type, $entity, $field, $inst
     case 'os2web_qbrick_movie_simple':
       foreach ($items as $delta => $item) {
         if ($item['id']) {
-          $embed_div = '<div id="qbrick" data-qbrick-as="0" data-qbrick-fs="1" data-qbrick-rp="0" data-qbrick-cb="1" data-qbrick-il="1" data-qbrick-sp="1" data-qbrick-width="320" data-qbrick-height="180" data-qbrick-mcid="!movieid!playerid">&nbsp;</div>';
+          $embed_div = '<div id="qbrick-container" data-qbrick-as="0" data-qbrick-fs="1" data-qbrick-rp="0" data-qbrick-cb="1" data-qbrick-il="1" data-qbrick-sp="1" data-qbrick-width="320" data-qbrick-height="180" data-qbrick-mcid="!movieid!playerid">&nbsp;</div>';
           $element[$delta]['#markup'] = format_string($embed_div, array(
             '!playerid' => $player_id,
             '!movieid' => $item['id'],
