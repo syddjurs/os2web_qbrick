@@ -3,7 +3,8 @@ OS2Web qBrick Module
 
 Description
 -----------
-This module provides an qBrick movie implementation
+This module provides an qBrick movie implementation using the newest Javascript
+implementation of the Qbrick player.
 
 Dependencies
 -----------

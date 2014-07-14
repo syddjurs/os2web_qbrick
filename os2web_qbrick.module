@@ -190,7 +190,7 @@ function os2web_qbrick_field_formatter_view($entity_type, $entity, $field, $inst
       $icon = drupal_get_path('module', 'os2web_qbrick') . '/images/video.jpg';
       foreach ($items as $delta => $item) {
         if ($item['seek']) {
-          $seek_link = '<a href="#qbrick_professional_qbrick1" onclick="javascript:play(' . $item['seek'] . ');"><img src="/' . $icon . '" alt="Show video"/></a>';
+          $seek_link = '<a href="#qbrick_professional_qbrick1" class="qbrick-seek" data-qbrick-seek="' . $item['seek'] . '"><img src="/' . $icon . '" alt="Show video"/></a>';
           $element[$delta]['#markup'] = $seek_link;
         }
       }
@@ -199,20 +199,14 @@ function os2web_qbrick_field_formatter_view($entity_type, $entity, $field, $inst
     case 'os2web_qbrick_movie_simple':
       foreach ($items as $delta => $item) {
         if ($item['id']) {
-          $embed_script = '<div data-qbrick-as="0" data-qbrick-fs="1" data-qbrick-rp="0" data-qbrick-cb="1" data-qbrick-il="1" data-qbrick-sp="1" data-qbrick-width="320" data-qbrick-height="180" data-qbrick-mcid="!movieid!playerid">&nbsp;</div>
-    <script type="text/javascript" src="http://professional.player.qbrick.com/playerembed.js"></script>
-    <script type="text/javascript">
-      function play(amount) {
-        var pro = document.getElementById("qbrick_professional_qbrick1");
-        if (pro) {
-              pro.qbProSeekMedia(amount);
-          }
-        }
-    </script>';
-          $element[$delta]['#markup'] = format_string($embed_script, array(
+          $embed_div = '<div id="qbrick-container" data-qbrick-as="0" data-qbrick-fs="1" data-qbrick-rp="0" data-qbrick-cb="1" data-qbrick-il="1" data-qbrick-sp="1" data-qbrick-width="320" data-qbrick-height="180" data-qbrick-mcid="!movieid!playerid">&nbsp;</div>';
+          $element[$delta]['#markup'] = format_string($embed_div, array(
             '!playerid' => $player_id,
             '!movieid' => $item['id'],
             '!seek' => $item['seek']));
+          $element[$delta]['#attached']['js']['http://publisher.qbrick.com/Qbrick.Publisher.js'] = array('type' => 'external');
+          $element[$delta]['#attached']['js'][] = drupal_get_path('module', 'os2web_qbrick') . '/js/os2web_qbrick.js';
+
         }
       }
       break;
